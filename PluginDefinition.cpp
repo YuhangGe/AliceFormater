@@ -107,7 +107,9 @@ void hello()
 
     // Say hello now :
     // Scintilla control has no Unicode mode, so we use (char *) here
-    ::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)"Hello, Alice. I love you so much!");
+   
+	::SendMessage(curScintilla,  SCI_SETTEXT, 0, (LPARAM)"Hello, Alice. I love you so much!\r\n°®Äã.");
+	//::SendMessage(curScintilla,  SCI_APPENDTEXT, 0, (LPARAM)msg);
 }
 
 void helloDlg()
