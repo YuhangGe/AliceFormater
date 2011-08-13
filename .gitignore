@@ -2,3 +2,9 @@ AliceFormater.sdf
 AliceFormater.opensdf
 
 ipch
+
+Debug/*
+! Debug/AliceFormater.dll
+
+Release/*
+! Release/AliceFormater.dll
