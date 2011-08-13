@@ -1,4 +1,4 @@
-﻿Alice Code Format Plugin
+﻿Alice Formater -  A Notepad++ Code Format Plugin
 
 Notepad++的代码格式化插件，项目处于初始阶段。
 
