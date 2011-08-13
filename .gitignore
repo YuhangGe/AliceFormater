@@ -3,8 +3,8 @@ AliceFormater.opensdf
 
 ipch
 
-Debug/*
+Debug
 ! Debug/AliceFormater.dll
 
-Release/*
+Release
 ! Release/AliceFormater.dll
