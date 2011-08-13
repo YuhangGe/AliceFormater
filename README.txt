@@ -1,5 +1,8 @@
-Alice Code Format Plugin
+ï»¿Alice Code Format Plugin
 
-Notepad++µÄ´úÂë¸ñÊ½»¯²å¼ş£¬ÏîÄ¿´¦ÓÚ³õÊ¼½×¶Î¡£
+Notepad++çš„ä»£ç æ ¼å¼åŒ–æ’ä»¶ï¼Œé¡¹ç›®å¤„äºåˆå§‹é˜¶æ®µã€‚
 
 To Alice, To My Love.
+
+email:	 abraham1@163.com
+address: software.nju.edu.cn
