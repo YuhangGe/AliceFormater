@@ -1,0 +1,26 @@
+﻿生成启动时间为 2011/8/13 16:30:47。
+     1>项目“E:\notepad++\AliceFormater\AliceFormater.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Release\AliceFormater.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D ALICEFORMATER_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AliceFormater.cpp PluginDefinition.cpp
+         AliceFormater.cpp
+         PluginDefinition.cpp
+     1>e:\notepad++\aliceformater\menuCmdID.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\notepad++\AliceFormater\Release\AliceFormater.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\AliceFormater.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\notepad++\AliceFormater\Release\AliceFormater.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\notepad++\AliceFormater\Release\AliceFormater.lib" /MACHINE:X86 /DLL Release\AliceFormater.obj
+         Release\PluginDefinition.obj
+            正在创建库 E:\notepad++\AliceFormater\Release\AliceFormater.lib 和对象 E:\notepad++\AliceFormater\Release\AliceFormater.exp
+         正在生成代码
+         已完成代码的生成
+         AliceFormater.vcxproj -> E:\notepad++\AliceFormater\Release\AliceFormater.dll
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\notepad++\AliceFormater\Release\AliceFormater.dll;#2" /manifest Release\AliceFormater.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“Release\AliceFormater.unsuccessfulbuild”。
+         正在对“Release\AliceFormater.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\notepad++\AliceFormater\AliceFormater.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.18
