@@ -1,0 +1,5 @@
+Alice Code Format Plugin
+
+Notepad++的代码格式化插件，项目处于初始阶段。
+
+To Alice, To My Love.
