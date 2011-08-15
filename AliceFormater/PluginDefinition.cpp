@@ -90,9 +90,7 @@ bool setCommand(size_t index, TCHAR *cmdName, PFUNCPLUGINCMD pFunc, ShortcutKey 
     return true;
 }
 
-//----------------------------------------------//
-//-- STEP 4. DEFINE YOUR ASSOCIATED FUNCTIONS --//
-//----------------------------------------------//
+
 void hello()
 {
     // Open a new document
@@ -105,11 +103,9 @@ void hello()
         return;
     HWND curScintilla = (which == 0)?nppData._scintillaMainHandle:nppData._scintillaSecondHandle;
 
-    // Say hello now :
-    // Scintilla control has no Unicode mode, so we use (char *) here
-   
+
 	::SendMessage(curScintilla,  SCI_SETTEXT, 0, (LPARAM)"Hello, Alice. I love you so much!\r\n°®Äã.");
-	//::SendMessage(curScintilla,  SCI_APPENDTEXT, 0, (LPARAM)msg);
+	
 }
 
 void helloDlg()
