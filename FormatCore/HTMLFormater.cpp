@@ -8,15 +8,15 @@ const string HTMLFormater::INLINE_TAGS[INLINE_TAG_NUMS]={
 	string("span"),string("a"),string("img"),string("title"),string("link")
 };
 
-string HTMLFormater::format(const char* content){
-	HTMLFormater f(content);
+string HTMLFormater::format(const char* content,int size){
+	HTMLFormater f(content,size);
 	return f.doFormat();
 }
 
 
-HTMLFormater::HTMLFormater(const char* content):cur_idx(0),cur_char(0),cur_intent_num(0)
+HTMLFormater::HTMLFormater(const char* content,int size):cur_idx(0),cur_char(0),cur_intent_num(0)
 {
-	total_len=strlen(content);
+	total_len=size;
 	this->content=content;
 	intent_char= ' ';
 	intent_num = 4;
@@ -74,8 +74,16 @@ string HTMLFormater::doFormat(){
 				formatPhp();
 			}
 			else if(cur_char=='!'){
-				getNextChar();
-				formatDoc();
+				if(getNextChar()=='-')
+					if(getNextChar()=='-')
+						formatComment();
+					else
+					{
+						append('-');
+						formatDirect('>');
+					}
+				else
+					formatDoc();
 			}
 			else if(cur_char=='/'){
 				getNextChar();
@@ -91,6 +99,22 @@ string HTMLFormater::doFormat(){
 
 	}
 	return output;
+}
+void HTMLFormater::formatComment(){
+	bool go_on=true;
+	appendNewLine(this->cur_intent_num).append("<!-");
+	while(go_on && cur_char!=NULL){
+		formatDirect('-');
+		append('-');
+		if(getNextChar()=='-'){
+			append('-');
+			if(getNextChar()=='>'){
+				append('>');
+				go_on=false;
+			}
+		}
+	}
+	
 }
 void HTMLFormater::formatText(){
 	string text;
@@ -109,6 +133,8 @@ void HTMLFormater::formatText(){
 	if(t.is_inline==false)
 		appendNewLine(t.intent_num+1);
 	append(text);
+	if(!tags.empty());
+		tags.top().is_empty=false;
 }
 void HTMLFormater::formatPhp(){
 }
@@ -117,12 +143,14 @@ void HTMLFormater::formatScript(){
 void HTMLFormater::formatTag(){
 
 	string tag_name;
-	string tag;
+
 	while(cur_char!=' ' && cur_char!='\t' && cur_char!='>'){
 		tag_name.push_back(cur_char);
 		getNextChar();
 	}
 	appendNewLine(this->cur_intent_num).append('<').append(tag_name);
+	if(!tags.empty())
+		tags.top().is_empty=false;
 	Tag t(tag_name,cur_intent_num,this->isInlineTag(tag_name));
 	tags.push(t);
 	cur_intent_num++;
@@ -159,7 +187,8 @@ void HTMLFormater::formatCloseTag(){
 	}
 	Tag e_t=tags.top();
 	if(e_t.value==tag_name){
-		if(e_t.is_inline==false)
+		//cout<<e_t.value<<':'<<e_t.is_empty<<endl;
+		if(e_t.is_inline==false && e_t.is_empty==false)
 			appendNewLine(e_t.intent_num);
 		tags.pop();
 		this->cur_intent_num--;

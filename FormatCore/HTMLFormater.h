@@ -32,7 +32,8 @@ class HTMLFormater
 	void formatScript();
 	void formatDirect(const char until);
 	void formatText();
-	
+	void formatComment();
+
 	HTMLFormater& append(const char c);
 	HTMLFormater& append(const char* c);
 	HTMLFormater& append(const string& c);
@@ -41,8 +42,8 @@ class HTMLFormater
 	bool isInlineTag(string tag_name);
 
 public:
-	static string format(const char* content);
-	HTMLFormater(const char* content);
+	static string format(const char* content,int size);
+	HTMLFormater(const char* content,int size);
 	~HTMLFormater(void);
 };
 
