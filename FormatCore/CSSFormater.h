@@ -17,6 +17,9 @@ static const string INLINE_TAGS[];
 	char pre_char;
 	const char* content;
 	string output;
+
+	bool new_line;
+
 	string doFormat();
 	
 	char getNextChar();
@@ -26,6 +29,8 @@ static const string INLINE_TAGS[];
 	void formatStyleLine();
 
 	void formatDirect(const char until);
+	void formatDirect(const char c1,const char c2);
+
 	void formatStyleBlock();
 	void formatComment();
 	void formatLabel();

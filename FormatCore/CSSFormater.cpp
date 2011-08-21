@@ -12,7 +12,7 @@ string CSSFormater::format(const char* content){
 }
 
 
-CSSFormater::CSSFormater(const char* content):cur_idx(0),cur_char(0),cur_intent_num(0)
+CSSFormater::CSSFormater(const char* content):cur_idx(0),cur_char(0),cur_intent_num(0),new_line(true)
 {
 	total_len=strlen(content);
 	this->content=content;
@@ -55,8 +55,16 @@ char CSSFormater::getNextChar(){
 		return NULL;
 	}
 	cur_char=content[cur_idx];
-	cout<<cur_char;
 	cur_idx++;
+
+	//new_line用于判断换行之后有没有出现非空字符，即判断当前这行是不是空行。
+	//用在格式化注释时，如果遇到注释时当前行还没有出现过非空字符，说明注释是在
+	//新的一行，需要增加换行符；否则说明注释是在一行的末尾，不需要换行。
+	if(cur_char=='\n'){
+		new_line=true;
+	}else if(isSpace(cur_char)==false){
+		new_line=false;
+	}
 	return cur_char;
 }
 char CSSFormater::skipSpace(){
@@ -72,7 +80,8 @@ string CSSFormater::doFormat(){
 	while(cur_char!=NULL){
 		if(cur_char==NULL){
 			break;
-		}else if(cur_char=='/'){
+		}else if(cur_char=='/' && getNextChar()=='*'){
+			getNextChar();
 			formatComment();
 		}
 		else if(isSpace(cur_char)){
@@ -94,6 +103,7 @@ bool CSSFormater::isSpace(const char c){
 }
 void CSSFormater::formatLabel(){
 	skipSpace();
+	appendNewLine(0);
 	while(cur_char!=NULL){
 		if(isSpace(cur_char)==true){
 			skipSpace();
@@ -113,15 +123,35 @@ void CSSFormater::formatLabel(){
 	}
 }
 void CSSFormater::formatComment(){
-	if(getNextChar()=='*'){
-		appendNewLine(0).append("/*");
+	if(new_line)
+		appendNewLine(this->cur_intent_num);
+	append("/*");
+	bool go_on=true;
+	while(cur_char!=NULL){
+		formatDirect('/','\n');
+		if(cur_char=='\n'){
+			appendNewLine(this->cur_intent_num).append(' ');
+			skipSpace();
+		}else
+			if(pre_char=='*')
+				break;
+			else{
+				append('/');
+				getNextChar();
+			}
 	}
+	append('/');
 }
 void CSSFormater::formatStyleBlock(){
 	while(cur_char!=NULL && cur_char!='}'){
-		formatStyleLine();
+		skipSpace();
+		if(cur_char=='/' && getNextChar()=='*'){
+			getNextChar();
+			formatComment();
+		}else
+			formatStyleLine();
 	}
-	appendNewLine(0).append('}').appendNewLine(0);
+	appendNewLine(this->cur_intent_num-1).append('}');
 	getNextChar();
 }
 void CSSFormater::formatStyleLine(){
@@ -178,3 +208,11 @@ void CSSFormater::formatDirect(const char until){
 	}
 }
 
+
+void CSSFormater::formatDirect(const char c1, const char c2){
+	while(cur_char!=NULL && cur_char!=c1 && cur_char!=c2){
+		append(cur_char);
+		pre_char=cur_char;
+		getNextChar();
+	}
+}
