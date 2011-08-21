@@ -1,0 +1,18 @@
+
+
+ 	#main{
+	border:1px solid #323235;
+font-family: 15px    "ËÎÌו",  "Helvetica   Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif
+
+}
+
+	.span   t tab  ,
+  div   a,
+#a div
+ span   {
+	margin-top:1px solid    blue ;
+  text-align:center;
+padding  :   1px  solid blue ;
+
+
+}
