@@ -1,43 +1,9 @@
 
-/*
+var a=10;
 
-Theme Name: Twenty Eleven
+a++; //   ÄãºÃ£¬hello
 
-Description: Used to style the TinyMCE editor.
+/* djksldj
+  * djslds
 
-*/
- 	#main{
-
-background: url(" icon.png")   
-  no-repeat  scroll -40px 0 transparent;
-	
-cursor: pointer ;
-/*
-   *djlsd
-*/
-	display : inline-block;
-	border:1px solid #323235; /*jjls
-*jsklj s
-*/
-font-family: 15px    "ËÎÌå",  "Helvetica   Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif /* jdsklfj */
-
-}
-
-
-
- /*
-  *
-  *jsljflsfdjl
-  */
-	.span   t tab  ,
-  div   a,
-#a div
- span   {
-	margin-top:1px solid    blue ;
-  text-align:center;
-padding  :   1px  solid blue ;
-
-
-}
-div{
-}
+djsl */ int a=10;

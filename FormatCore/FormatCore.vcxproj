@@ -76,6 +76,7 @@
   <ItemGroup>
     <ClCompile Include="HTMLFormater.cpp" />
     <ClCompile Include="JSFormater.cpp" />
+    <ClCompile Include="JSLexer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CSSFormater.cpp" />
     <ClCompile Include="Tag.cpp" />
@@ -84,6 +85,7 @@
     <ClInclude Include="HTMLFormater.h" />
     <ClInclude Include="JSFormater.h" />
     <ClInclude Include="CSSFormater.h" />
+    <ClInclude Include="JSLexer.h" />
     <ClInclude Include="Tag.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
