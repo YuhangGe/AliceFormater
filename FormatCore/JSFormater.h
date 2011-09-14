@@ -1,20 +1,20 @@
-//#pragma once
-//#include<string>
-//#include<stack>
-//using namespace std;
-//
-//class JSFormater
-//{
-//static const string INLINE_TAGS[];
-//	int total_len;
-//	int cur_idx;
-//	int cur_intent_num;
-//	char intent_char;
-//	char intent_num;
-//	string intent_str;
-//
-//	char cur_char;
-//	char pre_char;
+#pragma once
+#include<string>
+
+using namespace std;
+
+class JSFormater
+{
+
+	int total_len;
+	int cur_idx;
+	int cur_intent_num;
+	char intent_char;
+	char intent_num;
+	string intent_str;
+
+	char cur_char;
+	char pre_char;
 //	const char* content;
 //	string output;
 //	string doFormat();
@@ -43,5 +43,5 @@
 //	static string format(const char* content);
 //	JSFormater(const char* content);
 //	~JSFormater(void);
-//};
-//
+};
+

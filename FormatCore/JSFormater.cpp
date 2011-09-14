@@ -1,13 +1,9 @@
-//#include<iostream>
-//#include<algorithm>
-//#include "JSFormater.h"
-//
-//#define INLINE_TAG_NUMS 5
-//
-//const string JSFormater::INLINE_TAGS[INLINE_TAG_NUMS]={
-//	string("span"),string("a"),string("img"),string("title"),string("link")
-//};
-//
+#include<iostream>
+#include<algorithm>
+#include "JSFormater.h"
+
+
+
 //string JSFormater::format(const char* content){
 //	JSFormater f(content);
 //	return f.doFormat();
