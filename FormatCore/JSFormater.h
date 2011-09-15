@@ -15,7 +15,6 @@ class JSFormater
 	JSLexer* lexer;
 	Token cur_token;
 	string output;
-	string doFormat();
 
 	JSFormater& append(const char c);
 	JSFormater& append(const char* c);
@@ -47,14 +46,26 @@ class JSFormater
 	string fExpression();
 	string fId();
 	string fBlock();
-	string fIf();
+	string fFor();
 	string fExpr();
-	bool is_tag(int tag, const char* ctag){
-		return tag==JSLexer::get_tag(ctag);
+	string fPriExpr();
+	string fObject();
+	string fArray();
+	string fAssignExpr();
+	string fLeftExpr();
+	bool is_tag(const Token& t, const char* ctag){
+		return t.tag==JSLexer::get_tag(ctag);
+	}
+	bool is_tags(const Token& t,const char* ctags[], int n){
+		for(int i=0;i<n;i++){
+			if(t.tag==JSLexer::get_tag(ctags[i]))
+				return true;
+		}
+		return false;
 	}
 	
 public:
-	static string format(const char* content);
+	string format();
 	JSFormater(const char* content);
 	~JSFormater(void);
 };

@@ -7,7 +7,7 @@ struct str_hash :public binary_function<const char*, const char*, bool>{
 	public:
 	result_type operator()(const first_argument_type& _Left, const second_argument_type& _Right) const
 	{
-	  return(stricmp(_Left, _Right) < 0 ? true : false);
+	  return(_stricmp(_Left, _Right) < 0 ? true : false);
 	}
 }; 
  
@@ -29,6 +29,7 @@ public:
 	bool operator !=(const Token& another){
 		return !(this->operator==(another));
 	}
+	
 	static Token END,EMPTY,WRONG;
 };
 
@@ -45,7 +46,7 @@ private:
 	bool read_the_ch(char c);
 	Token help_get_token(char c1,char c2,char c3);
 	
-	int line;
+	
 	bool is_digit(char ch){
 		return ch != NULL && ch >= '0' && ch <= '9';
 	}
@@ -61,14 +62,20 @@ private:
 	static const hash_map<const char* ,int, hash_compare<const char*, str_hash>> tag_list;
 	
 	static bool is_tag(const char* k1,const char * tag ){
-		int r1=get_tag(k1);
-		int r2=get_tag(tag);
+		int r1=JSLexer::get_tag(k1);
+		int r2=JSLexer::get_tag(tag);
 		if(r1==-1 || r2==-1 || r1!=r2)
 			return false;
 		return true;
 	}
-	
+	static bool is_tag(const char* k1, const char* tags[], int n){
+		for(int i=0;i<n;i++)
+			if(JSLexer::is_tag(k1,tags[i]))
+				return true;
+		return false;
+	}
 public:
+	int line;
 	Token scan();
 	JSLexer(const char* source);
 	~JSLexer(void);

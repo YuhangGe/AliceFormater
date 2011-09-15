@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<hash_map>
-#include "JSLexer.h"
+#include "JSFormater.h"
 
 using namespace std;
 
@@ -18,12 +18,14 @@ int main(){
 	//fwrite(out.c_str(),out.length(),1,fo);
 	//fclose(fo);
 
-	JSLexer lex(buf);
+	/*JSLexer lex(buf);
 	Token t=lex.scan();
 	while(t!=Token::END){
 		cout<<t.value<<':'<<t.tag<<endl;
 		t=lex.scan();
-	}
+	}*/
+	JSFormater* jsf=new JSFormater(buf);
+	cout<<jsf->format();
 
 	system("pause");
 }

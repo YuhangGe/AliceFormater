@@ -4,20 +4,25 @@ Token Token::EMPTY=Token(-2,"\0");
 Token Token::END=Token(-1,"\0");
 Token Token::WRONG=Token(-3,"\0");
 
-JSLexer::JSLexer(const char* source):peek(' '),cur_idx(-1),line(0)
+JSLexer::JSLexer(const char* source):peek(' '),cur_idx(-1),line(1)
 {
 	this->source=source;
 	this->end_idx=strlen(this->source);
+	this->init_tokens();
 }
 
 
 JSLexer::~JSLexer(void)
 {
+	hash_map<const char*,Token >::const_iterator f,e;
+	for(f=buf_token.begin(),e=buf_token.end();f!=e;f++){
+		delete f->first;
+	}
 }
 
 void JSLexer::init_tokens(){
 	hash_map<const char*,int>::const_iterator f,e;
-	for(f=tag_list.begin();f!=tag_list.end();f++){
+	for(f=tag_list.begin(),e=tag_list.end();f!=e;f++){
 		save_buffer_token(Token(f->second,f->first));
 	}
 }
@@ -159,7 +164,9 @@ Token JSLexer::scan(){
 				break;
 			case '\'':
 			case '\"':
-				string r_str=read_str(cur_peek);
+				string r_str;
+				r_str.push_back(cur_peek);
+				r_str.append(read_str(cur_peek)).push_back(cur_peek);
 				return Token(get_tag("string"),r_str);
 				break;
 		}
@@ -200,7 +207,9 @@ Token JSLexer::get_buffer_token(const char* word){
 	return Token::EMPTY;
 }
 void JSLexer::save_buffer_token(Token t){
-	buf_token.insert(hash_map<const char*,Token>::value_type(t.value.c_str(),t));
+	char * k=new char[t.value.size()];
+	strcpy(k,t.value.c_str());
+	buf_token.insert(hash_map<const char*,Token>::value_type(k,t));
 }
 
 string JSLexer::read_str(char quote){
