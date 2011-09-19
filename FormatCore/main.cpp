@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<hash_map>
-#include "JSFormater.h"
+#include "JSFormaterA.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 
 	FILE* f=fopen("input.txt","r");
-	FILE* fo=fopen("output.txt","w");
+	//FILE* fo=fopen("output.txt","w");
 	char buf[10240];
 	int size=fread(buf,1,10240,f);
 	fclose(f);
@@ -24,8 +24,9 @@ int main(){
 		cout<<t.value<<':'<<t.tag<<endl;
 		t=lex.scan();
 	}*/
-	JSFormater* jsf=new JSFormater(buf);
+	JSFormaterA* jsf=new JSFormaterA(buf);
 	cout<<jsf->format();
+
 
 	system("pause");
 }

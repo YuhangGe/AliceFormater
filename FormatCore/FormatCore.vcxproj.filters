@@ -33,6 +33,9 @@
     <ClCompile Include="JSLexer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="JSFormaterA.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HTMLFormater.h">
@@ -48,6 +51,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="JSLexer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="JSFormaterA.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
